@@ -3,8 +3,8 @@
 
 # WEEGRAM
 
-This script allows to receive telegram notification when you are away
-and priv/highlight messages are received
+This script allows to receive [telegram](https://telegram.org/) notifications when you are away
+and priv/highlight messages are received.
 
 # Installation
 
@@ -19,19 +19,10 @@ or
 /python load weegram.py
 ```
 
-To autoload, symlink it to autoload:
+To autoload, symlink it to `autoload`:
 ```bash
 ln -s ~/.weechat/python/weegram.py ~/.weechat/python/autoload
 ```
-
-To get a bot on telegram:
-
-* talk to "botfather"
-* create a bot and retrieve the token (`/newbot`)
-* start a chat with the newly created bot and say *hello*
-* query `https://api.telegram.org/bot<TOKEN>/getUpdates` to get the *chat-id*
-
-For more see: <https://core.telegram.org/bots#6-botfather>
 
 # Usage
 
@@ -40,6 +31,18 @@ Quick start:
 /script load weegram.py
 /weegram help
 ```
+
+# Get a telegram bot
+
+To get a bot on [telegram](https://telegram.org/):
+
+* talk to "botfather"
+* create a bot and retrieve the token (`/newbot`)
+* start a chat with the newly created bot and say *hello*
+* query `https://api.telegram.org/bot<TOKEN>/getUpdates` to get the *chat-id*
+
+For more see: <https://core.telegram.org/bots#6-botfather>
+
 
 # Contribution
 
