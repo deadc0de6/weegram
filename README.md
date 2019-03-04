@@ -36,13 +36,12 @@ Quick start:
 
 To get a bot on [telegram](https://telegram.org/):
 
-* talk to "botfather"
-* create a bot and retrieve the token (`/newbot`)
+* talk to [botfather](https://telegram.me/BotFather)
+* [create a new bot](https://core.telegram.org/bots#creating-a-new-bot) and retrieve the token (`/newbot`)
 * start a chat with the newly created bot and say *hello*
 * query `https://api.telegram.org/bot<TOKEN>/getUpdates` to get the *chat-id*
 
 For more see: <https://core.telegram.org/bots#6-botfather>
-
 
 # Contribution
 
