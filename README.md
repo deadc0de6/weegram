@@ -3,8 +3,8 @@
 
 # WEEGRAM
 
-This script allows to receive [telegram](https://telegram.org/) notifications when you are away
-and priv/highlight messages are received.
+This script allows to receive [telegram](https://telegram.org/) notifications from
+[weechat](https://weechat.org/) when you are away and priv/highlight messages are received.
 
 # Installation
 
@@ -13,10 +13,6 @@ Install by copying the script `weegram.py` in `~/.weechat/python/`
 Load with
 ```
 /script load weegram.py
-```
-or
-```
-/python load weegram.py
 ```
 
 To autoload, symlink it to `autoload`:
@@ -30,6 +26,29 @@ Quick start:
 ```
 /script load weegram.py
 /weegram help
+```
+
+The available options:
+```
+| weegram (status|enable|disable|chatid|token|withcontent|help)
+|   status: get service status
+|   enable [<time>]: enable service
+|     - time: inactivity duration to activate (in min)
+|   disable: disable service
+|   chatid <id>: set chat-id
+|   token <token>: set token
+|   withcontent: toggle content in notification
+|   help: get help
+```
+
+Set options by simply calling `weegram`, for example
+```
+/weegram chatid my-very-secret-chat-id
+```
+
+Get current settings with
+```
+/weegram status
 ```
 
 # Get a telegram bot
