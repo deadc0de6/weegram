@@ -60,7 +60,7 @@ SUBUSAGE = [
     '  {}disable{}: disable service'.format(C_B, C_NB),
     '  {}chatid <id>{}: set chat-id'.format(C_B, C_NB),
     '  {}token <token>{}: set token'.format(C_B, C_NB),
-    '  {}withcontent{}: content in notification'.format(C_B, C_NB),
+    '  {}withcontent{}: toggle content in notification'.format(C_B, C_NB),
     '  {}help{}: get help'.format(C_B, C_NB),
             ]
 TG_URL = 'https://api.telegram.org'
@@ -112,7 +112,7 @@ def pstatus():
     '''print config status'''
     out('{} status:'.format(CMD))
     out('- enabled: {}'.format(get_cfg('enabled')))
-    out('- inactivity: {}'.format(get_cfg('timer')))
+    out('- inactivity: {}'.format(get_cfg('inactivity')))
     out('- token: {}'.format(get_cfg('token')))
     out('- chatid: {}'.format(get_cfg('chatid')))
     out('- withcontent: {}'.format(get_cfg('withcontent')))
