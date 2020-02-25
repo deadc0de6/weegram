@@ -235,7 +235,6 @@ def priv_cb(data, signal, signal_data):
                                {'message': signal_data})
     nick = msg['nick']
     content = msg['text']
-    chan = msg['channel']
     return notify(nick, content, priv=True)
 
 
