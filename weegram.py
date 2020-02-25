@@ -144,7 +144,7 @@ def telegram(content):
     if not token or not chatid:
         error('missing token or chatid')
         return False
-    content = urllib.quote_plus(content)
+    content = urllib.parse.quote_plus(content)
     url = TG_API.format(token, chatid, content)
     r = requests.get(url)
     if r.status_code != 200:
@@ -167,7 +167,8 @@ def notify(nick, content, priv=True):
     dt = datetime.datetime.now().strftime('%Y%m%d-%H:%M')
     pre = 'priv message' if priv else 'message'
     post = ': {}'.format(content) if get_cfg('withcontent') == 'on' else ''
-    content = '[{}] {} from \"{}\" on weechat{}'.format(dt, pre, nick, post)
+    content = '[{}] {} from \"{}\" on weechat{}'
+    content = content.format(dt, pre, nick, post)
     if not telegram(content):
         return NOK
     return OK
@@ -230,10 +231,12 @@ def config_cb(data, option, value):
 
 def priv_cb(data, signal, signal_data):
     '''private message callback'''
-    msg = w.info_get_hashtable('irc_message_parse', {'message': signal_data})
+    msg = w.info_get_hashtable('irc_message_parse',
+                               {'message': signal_data})
     nick = msg['nick']
     content = msg['text']
-    return notify(nick, content)
+    chan = msg['channel']
+    return notify(nick, content, priv=True)
 
 
 def highlight_cb(data, signal, signal_data):
