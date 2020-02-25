@@ -144,7 +144,7 @@ def telegram(content):
     if not token or not chatid:
         error('missing token or chatid')
         return False
-    content = urllib.quote_plus(content)
+    content = urllib.parse.quote_plus(content)
     url = TG_API.format(token, chatid, content)
     r = requests.get(url)
     if r.status_code != 200:
