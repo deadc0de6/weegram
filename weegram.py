@@ -153,7 +153,7 @@ def telegram(content):
     return True
 
 
-def notify(nick, chan, content, priv=True):
+def notify(nick, content, priv=True):
     '''process notification'''
     if get_cfg('enabled') != 'on':
         return OK
@@ -167,8 +167,8 @@ def notify(nick, chan, content, priv=True):
     dt = datetime.datetime.now().strftime('%Y%m%d-%H:%M')
     pre = 'priv message' if priv else 'message'
     post = ': {}'.format(content) if get_cfg('withcontent') == 'on' else ''
-    content = '[{}] {} from \"{}\" in #{} on weechat{}'
-    content = content.format(dt, pre, nick, chan, post)
+    content = '[{}] {} from \"{}\" on weechat{}'
+    content = content.format(dt, pre, nick, post)
     if not telegram(content):
         return NOK
     return OK
@@ -236,18 +236,15 @@ def priv_cb(data, signal, signal_data):
     nick = msg['nick']
     content = msg['text']
     chan = msg['channel']
-    return notify(nick, chan, content)
+    return notify(nick, content, priv=True)
 
 
 def highlight_cb(data, signal, signal_data):
     '''highlight message callback'''
     fields = signal_data[1:].strip(' ').split()
     nick = fields[0]
-    msg = w.info_get_hashtable("irc_message_parse",
-                               {"message": signal_data})
-    chan = msg['channel']
     content = ' '.join(fields[1:])
-    return notify(nick, chan, content, priv=False)
+    return notify(nick, content, priv=False)
 
 ############################################
 # msg hooks
